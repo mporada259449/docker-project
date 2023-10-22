@@ -1,5 +1,5 @@
-class Calculator():
-    def __init__(self, num1, num2) -> None:
+class Calculator:
+    def __init__(self, num1, num2):
         self.num1 = num1
         self.num2 = num2
 
@@ -9,7 +9,7 @@ class Calculator():
     def add(self):
         return self.num1+self.num2
     
-    def substract(self):
+    def subtract(self):
         return self.num1-self.num2
     
     def multiply(self):
@@ -20,3 +20,4 @@ class Calculator():
             return self.num1/self.num2
         except ZeroDivisionError:
             return "You cannot devide by 0"
+        
