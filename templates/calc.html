@@ -9,15 +9,27 @@
             <p>Second number</p>
             <input type="number" id="second" name="second">
             <div class="buttons">
-                <button type="submit" formmethod="post" name="add">ADD</button>
-                <button type="submit" formmethod="post" name="subtract">SUBTRACT</button>
-                <button type="submit" formmethod="post" name="multiply">MULTIPLY</button>
-                <button type="submit" formmethod="post" name="divide">DIVIDE</button>
+                <button type="submit" formmethod="post" name="operation" value="add">ADD</button>
+                <button type="submit" formmethod="post" name="operation" value="subtract">SUBTRACT</button>
+                <button type="submit" formmethod="post" name="operation" values="multiply">MULTIPLY</button>
+                <button type="submit" formmethod="post" name="operation" values="divide">DIVIDE</button>
         </div>
         </form>
         
         {% if result %}
             <p>Your result is {{ result }}</p>
         {% endif %}
+        <p>Previous operations</p> 
+            {% for user_result in user_results %}
+                    {% if user_result.operation == "add" %}
+                        <p>Result: {{ user_result.num1 }} + {{ user_result.num2 }} = {{ user_result.result }}</p>
+                    {% elif user_result.operation == "subtract" %}
+                        <p>{{ user_result.num1 }} - {{ user_result.num2 }} = {{ user_result.result }}</p> 
+                    {% elif user_result.operation == "multiply" %}
+                        <p>Result: {{ user_result.num1 }} * {{ user_result.num2 }} = {{ user_result.result }}</p>
+                    {% elif user_result.operation == "divide" %}
+                        <p>Result: {{ user_result.num1 }} / {{ user_result.num2 }} = {{ user_result.result }}</p>
+                    {% endif %}
+            {% endfor %}
     </body>
 </html>
