@@ -26,6 +26,7 @@ class Calc(View):
             result = calc.multiply()
         elif operation == "divide":
             result = calc.divide()
+            print(result)
 
         user_results = cache.get("user_results", [])
         print(user_results)
