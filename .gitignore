@@ -1,2 +1,2 @@
-django_app/calculator/__pycache__
-django_app/django_app/__pycache__
+django_app/calculator/__pycache__/**
+django_app/django_app/__pycache__/**

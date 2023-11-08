@@ -29,7 +29,6 @@ class Calc(View):
             print(result)
 
         user_results = cache.get("user_results", [])
-        print(user_results)
         if isinstance(result, float):
            user_results.append({"num1": num1, "num2": num2, "result": result, "operation": operation})
            cache.set("user_results", user_results)

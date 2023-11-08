@@ -22,13 +22,13 @@
         <p>Previous operations</p> 
             {% for user_result in user_results %}
                     {% if user_result.operation == "add" %}
-                        <p>Result: {{ user_result.num1 }} + {{ user_result.num2 }} = {{ user_result.result }}</p>
+                        <p>{{ user_result.num1 }} + {{ user_result.num2 }} = {{ user_result.result }}</p>
                     {% elif user_result.operation == "subtract" %}
                         <p>{{ user_result.num1 }} - {{ user_result.num2 }} = {{ user_result.result }}</p> 
                     {% elif user_result.operation == "multiply" %}
-                        <p>Result: {{ user_result.num1 }} * {{ user_result.num2 }} = {{ user_result.result }}</p>
+                        <p>{{ user_result.num1 }} * {{ user_result.num2 }} = {{ user_result.result }}</p>
                     {% elif user_result.operation == "divide" %}
-                        <p>Result: {{ user_result.num1 }} / {{ user_result.num2 }} = {{ user_result.result }}</p>
+                        <p>{{ user_result.num1 }} / {{ user_result.num2 }} = {{ user_result.result }}</p>
                     {% endif %}
             {% endfor %}
     </body>
