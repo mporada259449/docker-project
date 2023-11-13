@@ -2,6 +2,9 @@
 <html>
     <body>
         <h1>CALCULATOR APP FOR DOCKER PROJECT</h1>
+        <a href="/auth/register"><button>Register</button></a>
+        <a href="/auth/login"><button>Login</button></a>
+
         <form action="" method="post">
             {% csrf_token %}
             <p>First number</p>
@@ -13,7 +16,7 @@
                 <button type="submit" formmethod="post" name="operation" value="subtract">SUBTRACT</button>
                 <button type="submit" formmethod="post" name="operation" value="multiply">MULTIPLY</button>
                 <button type="submit" formmethod="post" name="operation" value="divide">DIVIDE</button>
-        </div>
+            </div>
         </form>
         
         {% if result %}

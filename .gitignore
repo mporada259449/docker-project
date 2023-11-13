@@ -1,1 +1,3 @@
 *.pyc
+.pg_service.conf
+.my_pgpass
