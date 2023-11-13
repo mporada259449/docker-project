@@ -1,4 +1,9 @@
 <!DOCTYPE html>
 <html>
     <h1>LOGIN</h1>
+    <form>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" formmethod="post" name="login" value="login">Login</button>
+    </form>
 </html>

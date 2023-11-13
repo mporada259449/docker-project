@@ -3,7 +3,12 @@
     <body>
         <h1>CALCULATOR APP FOR DOCKER PROJECT</h1>
         <a href="/auth/register"><button>Register</button></a>
-        <a href="/auth/login"><button>Login</button></a>
+        {% if user.is_authenticated %}
+            <a href="/auth/logout"><button>Logout</button></a>
+        {% else %}
+            <a href="/auth/login"><button>Login</button></a>
+        {% endif %}
+
 
         <form action="" method="post">
             {% csrf_token %}
@@ -22,6 +27,7 @@
         {% if result %}
             <p>Your result is {{ result }}</p>
         {% endif %}
+        <!--{% if user.is_authenticated %}-->
         <p>Previous operations</p> 
             {% for user_result in user_results %}
                     {% if user_result.operation == "add" %}
@@ -34,5 +40,6 @@
                         <p>{{ user_result.num1 }} / {{ user_result.num2 }} = {{ user_result.result }}</p>
                     {% endif %}
             {% endfor %}
+        <!--{% endif %}-->
     </body>
 </html>
