@@ -7,5 +7,9 @@
     </form>
     {% if data %}
         <p>{{ data }}</p>
+        {% if data == "User created" %}
+        <a href="/auth/login"><button>Login</button></a>
+        <a href="/"><button>Return to main page</button></a>
+        {% endif %}
     {% endif %}
 </html>
