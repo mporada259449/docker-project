@@ -1,2 +1,3 @@
-django_app/calculator/__pycache__/**
-django_app/django_app/__pycache__/**
+*.pyc
+.pg_service.conf
+.my_pgpass
