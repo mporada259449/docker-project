@@ -5,8 +5,7 @@
         
         {% if user.is_authenticated %}
             <a href="/auth/logout"><button >Logout</button></a>
-            <a href="/auth/logout"><button >Change password</button></a>
-            <a href="/auth/logout"><button ></button></a>
+            <a href="/auth/password_change"><button >Change password</button></a>
         {% else %}
             <a href="/auth/login"><button>Login</button></a>
             <a href="/auth/register"><button>Register</button></a>
@@ -16,9 +15,9 @@
         <form action="" method="post">
             {% csrf_token %}
             <p>First number</p>
-            <input type="number" id="first" name="first">
+            <input type="number" id="first" name="first" step="0.000000000000000001">
             <p>Second number</p>
-            <input type="number" id="second" name="second">
+            <input type="number" id="second" name="second" step="0.000000000000000001">
             <div class="buttons">
                 <button type="submit" formmethod="post" name="operation" value="add">ADD</button>
                 <button type="submit" formmethod="post" name="operation" value="subtract">SUBTRACT</button>
