@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from calculator.calculator import Calculator
+from calculator.calculator import add, subtract, multiply, divide
 from django.core.cache import cache
 
 class Calc(View):
@@ -14,25 +14,27 @@ class Calc(View):
         num1 = float(request.POST.get("first"))
         num2 = float(request.POST.get("second"))
         operation = request.POST.get("operation")
-        calc = Calculator(num1, num2)
+
         result = None
         user_results = None
 
         if operation == "add":
-            result = calc.add()
+            result = add.delay(num1, num2)
         elif operation =="subtract":
-            result = calc.subtract()
+            result = subtract.delay(num1, num2)
         elif operation == "multiply":
-            result = calc.multiply()
+            result = multiply.delay(num1, num2)
         elif operation == "divide":
-            result = calc.divide()
+            result = divide.delay(num1, num2)
 
         if request.user.is_authenticated:
             user_results_id = request.user.username
             user_results = cache.get(user_results_id, [])
-            if isinstance(result, float):
-                user_results.append({"num1": num1, "num2": num2, "result": result, "operation": operation})
+            if isinstance(result.get(), float):
+                user_results.append({"num1": num1, "num2": num2, "result": result.get(), "operation": operation})
                 cache.set(user_results_id, user_results)
 
-           
-        return render(request, self.template, {"result": result, "user_results": user_results})
+        return render(request, self.template, {"result": result.get(), "user_results": user_results})  
+            
+        
+
