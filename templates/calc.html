@@ -26,8 +26,10 @@
             </div>
         </form>
         
-        {% if result %}
-            <p>Your result is {{ result }}</p>
+        {% if result == "ERROR: no value provided" or result == "ERROR: devide by 0" %}
+            <p>{{ result }}</p>
+        {% else %}
+            <p>Your result is {{result}}</p>
         {% endif %}
         <!--{% if user.is_authenticated %}-->
         <p>Previous operations</p> 

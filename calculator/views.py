@@ -11,13 +11,19 @@ class Calc(View):
         return render(request, self.template)
     
     def post(self, request):
-        num1 = float(request.POST.get("first"))
-        num2 = float(request.POST.get("second"))
-        operation = request.POST.get("operation")
-
         result = None
         user_results = None
+        operation = request.POST.get("operation")
 
+        try:
+            num1 = float(request.POST.get("first"))
+            num2 = float(request.POST.get("second"))
+        except ValueError:
+            if request.user.is_authenticated:
+                user_results_id = request.user.username
+                user_results = cache.get(user_results_id, [])
+            return render(request, self.template, {"result": "ERROR: no value provided", "user_results": user_results})     
+    
         if operation == "add":
             result = add.delay(num1, num2)
         elif operation =="subtract":
