@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-62c@4go4yt_j^u+wsa3n+7c+@tm0rlwe+=t&+5d5kh4#wzzj-t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -99,7 +99,7 @@ DATABASES = {
 CACHE = {
     'default': {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": os.environ.get('REDISADDRES', "redis://127.0.0.1:6379/1"),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClinet"
         }
@@ -151,6 +151,6 @@ LOGIN_REDIRECT_URL="/"
 LOGOUT_REDIRECT_URL="/"
 
 
-CELERY_CACHE_BACKEND = 'default'
+CELERY_CACHE_BACKEND = 'redis://redis:6379/4'
 CELERY_RESULT_BACKEND = 'django-db'
-CELERY_BROKER_URL= 'redis://127.0.0.1:6379/2'
+CELERY_BROKER_URL= 'redis://redis:6379/2'
