@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-62c@4go4yt_j^u+wsa3n+7c+@tm0rlwe+=t&+5d5kh4#wzzj-t'
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,12 +87,6 @@ DATABASES = {
         'NAME': os.environ.get("DBNAME"),
         'USER': os.environ.get("DBUSER"),
         'PASSWORD': os.environ.get("DBPASSWORD"),
-
-
-        #"OPTIONS": {
-        #    "service": "~/docker-project/django_app/my_service",
-        #    "passfile": ".my_pgpass"
-        #}
     }
 }
 
