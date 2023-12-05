@@ -93,7 +93,7 @@ DATABASES = {
 CACHE = {
     'default': {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",
+        "LOCATION": "redis://" + os.environ.get("REDISHOST")+"/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClinet"
         }
@@ -145,6 +145,6 @@ LOGIN_REDIRECT_URL="/"
 LOGOUT_REDIRECT_URL="/"
 
 
-CELERY_CACHE_BACKEND = 'redis://redis:6379/4'
+CELERY_CACHE_BACKEND = "redis://"+ os.environ.get("REDISHOST")+'/4'
 CELERY_RESULT_BACKEND = 'django-db'
-CELERY_BROKER_URL= 'redis://redis:6379/2'
+CELERY_BROKER_URL= "redis://"+ os.environ.get("REDISHOST") +'/2'
